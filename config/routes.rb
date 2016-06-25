@@ -54,5 +54,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root 'application#home'
-  resources :goals
+  resources :goals, only: [:index,:update,:create]
 end
