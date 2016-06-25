@@ -22,6 +22,21 @@
           <div id="collapse_{{year}}_{{month}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{year}}_{{month}}">
             <div class="panel-body">
               <div class="panel-group">
+                <div class="panel panel-primary" ng-controller="NewGoalCtrl">
+                  <div class="panel-heading">
+                    <h5>Create a new goal for this month</h5>
+                  </div>
+                  <div class="panel-body">
+                    <form name="newGoal">
+                      <div class="col-md-10">
+                        <input ng-model="goal.name" type="text" placeholder="Stay classy" class="form-control" required />
+                      </div>
+                      <div class="col-md-2">
+                        <button class="btn btn-primary pull-right" ng-click="create()" ng-disabled="newGoal.$invalid">Create goal</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
                 <div class="panel panel-default" ng-repeat="(goalId, goal) in goals" ng-class="{'panel-success': goal.completed}" ng-controller="GoalCtrl">
                   <div class="panel-heading">
                     <h5>{{goal.name}}</h5>

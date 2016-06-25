@@ -35,3 +35,18 @@ goalsApp.controller('GoalCtrl', function($scope,$http) {
   }
 
 });
+
+goalsApp.controller('NewGoalCtrl',function($scope,$http,$window){
+  $scope.create = function() {
+    $http
+      .post('/goals',{
+        name: $scope.goal.name,
+        month: $scope.month,
+        year: $scope.year,
+        complete: false
+      })
+      .then(function() {
+        $window.location.reload();
+      })
+  }
+});
