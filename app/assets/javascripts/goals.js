@@ -15,6 +15,7 @@ goalsApp.controller('AppCtrl', function($scope,$http) {
         $scope.years[row.year][row.month] = [];
       }
       $scope.years[row.year][row.month].push({
+        id: row.id,
         name: row.name,
         completed: row.complete
       })
@@ -23,10 +24,14 @@ goalsApp.controller('AppCtrl', function($scope,$http) {
 
 });
 
-goalsApp.controller('GoalCtrl', function($scope) {
+goalsApp.controller('GoalCtrl', function($scope,$http) {
 
   $scope.complete = function() {
-    $scope.years[$scope.year][$scope.month][$scope.goalId].completed = true;
+    $http
+      .patch('/goals/' + $scope.goal.id, { complete: true })
+      .then(function(response) {
+        $scope.goal.completed = true;
+      })
   }
 
 });
