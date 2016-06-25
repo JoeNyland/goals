@@ -15,5 +15,4 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require angular
-//= require ngstorage
 //= require_tree .

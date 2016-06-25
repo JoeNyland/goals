@@ -47,4 +47,3 @@ end
 
 gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3'
-gem 'rails-assets-ngstorage', source: 'https://rails-assets.org'
