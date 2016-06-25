@@ -1,0 +1,43 @@
+<div class="container container-fluid goals" ng-app="goalsApp" ng-controller="AppCtrl">
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Goals</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="row" ng-repeat="(year, goals) in years">
+    <div class="col-md-8">
+      <h2>{{year}}</h2>
+      <div class="panel-group" id="accordion{{year}}" role="tablist" aria-multiselectable="true">
+
+        <div class="panel panel-default" ng-repeat="(month, goals) in goals">
+          <a role="button" data-toggle="collapse" data-parent="#accordion{{year}}" href="#collapse_{{year}}_{{month}}" aria-expanded="true" aria-controls="collapse_{{year}}_{{month}}">
+            <div class="panel-heading" role="tab" id="{{year}}_{{month}}">
+              <h4 class="panel-title">{{month}}</h4>
+            </div>
+          </a>
+          <div id="collapse_{{year}}_{{month}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{year}}_{{month}}">
+            <div class="panel-body">
+              <div class="panel-group">
+                <div class="panel panel-default" ng-repeat="(goalId, goal) in goals" ng-class="{'panel-success': goal.completed}" ng-controller="GoalCtrl">
+                  <div class="panel-heading">
+                    <h5>{{goal.name}}</h5>
+                  </div>
+                  <div class="panel-body" ng-hide="goal.completed">
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                      <button type="button" class="btn btn-primary" ng-click="complete()">Complete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
