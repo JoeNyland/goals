@@ -47,3 +47,4 @@ end
 
 gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3'
+gem 'faker'
