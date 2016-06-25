@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624174503) do
+ActiveRecord::Schema.define(version: 20160625232745) do
 
   create_table "goals", force: :cascade do |t|
     t.string   "name"
     t.string   "month"
     t.string   "year"
-    t.boolean  "complete"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "complete",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
