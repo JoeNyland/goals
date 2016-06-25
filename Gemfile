@@ -45,4 +45,5 @@ group :development do
   gem 'spring'
 end
 
+gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3'
