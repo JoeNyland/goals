@@ -58,6 +58,12 @@ goalsApp.controller('NewGoalCtrl',['$scope','$http',function($scope,$http){
         complete: false
       })
       .then(function(response) {
+        if (!$scope.$parent.years.hasOwnProperty(response.data.year)) {
+          $scope.$parent.years[response.data.year] = {};
+        }
+        if (!$scope.$parent.years[response.data.year].hasOwnProperty(response.data.month)) {
+          $scope.$parent.years[response.data.year][response.data.month] = [];
+        }
         $scope.$parent.years[response.data.year][response.data.month].push({
           name: response.data.name,
           complete: false
