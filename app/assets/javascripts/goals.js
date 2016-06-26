@@ -49,7 +49,7 @@ goalsApp.controller('GoalCtrl', ['$scope','$http',function($scope,$http) {
 
 }]);
 
-goalsApp.controller('NewGoalCtrl',['$scope','$http','$window',function($scope,$http,$window){
+goalsApp.controller('NewGoalCtrl',['$scope','$http',function($scope,$http){
   $scope.create = function() {
     $http
       .post('/goals',{
@@ -58,8 +58,12 @@ goalsApp.controller('NewGoalCtrl',['$scope','$http','$window',function($scope,$h
         year: $scope.goal.year,
         complete: false
       })
-      .then(function() {
-        $window.location.reload();
+      .then(function(response) {
+        $scope.$parent.years[response.data.year][response.data.month].push({
+          name: response.data.name,
+          complete: false
+        });
+        $scope.goal = {};
       })
   }
 }]);
