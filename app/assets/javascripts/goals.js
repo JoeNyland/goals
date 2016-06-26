@@ -2,7 +2,6 @@ var goalsApp = angular.module('goalsApp',[]);
 
 goalsApp.controller('AppCtrl', ['$scope','$http',function($scope,$http) {
 
-  $scope.currentYear = (new Date()).getFullYear();
   $scope.months = [
     'January',
     'February',
