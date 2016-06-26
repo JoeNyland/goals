@@ -8,6 +8,45 @@
     </div>
   </nav>
 
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-primary" ng-controller="NewGoalCtrl">
+        <div class="panel-heading">
+          <h5>Create a new goal for this month</h5>
+        </div>
+        <div class="panel-body">
+
+          <form class="form-horizontal" name="newGoal">
+            <div class="form-group">
+              <label for="inputGoalName" class="col-sm-2 control-label" required >Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputGoalName" placeholder="Stay classy!" ng-model="goal.name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputGoalName" class="col-sm-2 control-label">Month</label>
+              <div class="col-sm-10">
+                <%= select_month(Date.today, {}, class: 'form-control', 'ng-model':'goal.month', required: true) %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputGoalName" class="col-sm-2 control-label">Year</label>
+              <div class="col-sm-10">
+                <%= select_year(Date.today, {:start_year => Date.today.year, :end_year => 3.years.from_now.year}, {class: 'form-control', 'ng-model':'goal.year', required: true}) %>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary pull-right" ng-click="create()" ng-disabled="newGoal.$invalid">Create goal</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row" ng-repeat="(year, goals) in years">
     <div class="col-md-8">
       <h2>{{year}}</h2>
@@ -22,21 +61,6 @@
           <div id="collapse_{{year}}_{{month}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{year}}_{{month}}">
             <div class="panel-body">
               <div class="panel-group">
-                <div class="panel panel-primary" ng-controller="NewGoalCtrl">
-                  <div class="panel-heading">
-                    <h5>Create a new goal for this month</h5>
-                  </div>
-                  <div class="panel-body">
-                    <form name="newGoal">
-                      <div class="col-md-10">
-                        <input ng-model="goal.name" type="text" placeholder="Stay classy" class="form-control" required />
-                      </div>
-                      <div class="col-md-2">
-                        <button class="btn btn-primary pull-right" ng-click="create()" ng-disabled="newGoal.$invalid">Create goal</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
                 <div class="panel panel-default" ng-repeat="(goalId, goal) in goals" ng-class="{'panel-success': goal.completed}" ng-controller="GoalCtrl">
                   <div class="panel-heading">
                     <h5>{{goal.name}}</h5>

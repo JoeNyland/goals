@@ -3,9 +3,22 @@ var goalsApp = angular.module('goalsApp',[]);
 goalsApp.controller('AppCtrl', ['$scope','$http',function($scope,$http) {
 
   $scope.currentYear = (new Date()).getFullYear();
+  $scope.months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
 
   $http.get('/goals').then(function successCallback(response){
-
     $scope.years = {};
     angular.forEach(response.data, function(row) {
       if (!$scope.years.hasOwnProperty(row.year)) {
@@ -41,8 +54,8 @@ goalsApp.controller('NewGoalCtrl',['$scope','$http','$window',function($scope,$h
     $http
       .post('/goals',{
         name: $scope.goal.name,
-        month: $scope.month,
-        year: $scope.year,
+        month: $scope.months[$scope.goal.month - 1],
+        year: $scope.goal.year,
         complete: false
       })
       .then(function() {
