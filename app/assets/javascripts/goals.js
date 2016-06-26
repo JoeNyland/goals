@@ -1,6 +1,6 @@
 var goalsApp = angular.module('goalsApp',[]);
 
-goalsApp.controller('AppCtrl', function($scope,$http) {
+goalsApp.controller('AppCtrl', ['$scope','$http',function($scope,$http) {
 
   $scope.currentYear = (new Date()).getFullYear();
 
@@ -22,9 +22,9 @@ goalsApp.controller('AppCtrl', function($scope,$http) {
     });
   });
 
-});
+}]);
 
-goalsApp.controller('GoalCtrl', function($scope,$http) {
+goalsApp.controller('GoalCtrl', ['$scope','$http',function($scope,$http) {
 
   $scope.complete = function() {
     $http
@@ -34,9 +34,9 @@ goalsApp.controller('GoalCtrl', function($scope,$http) {
       })
   }
 
-});
+}]);
 
-goalsApp.controller('NewGoalCtrl',function($scope,$http,$window){
+goalsApp.controller('NewGoalCtrl',['$scope','$http','$window',function($scope,$http,$window){
   $scope.create = function() {
     $http
       .post('/goals',{
@@ -49,4 +49,4 @@ goalsApp.controller('NewGoalCtrl',function($scope,$http,$window){
         $window.location.reload();
       })
   }
-});
+}]);
