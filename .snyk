@@ -7,6 +7,9 @@ ignore:
     - '* > jquery-rails@4.2.1':
         reason: None given
         expires: '2016-12-29T10:00:23.944Z'
+    - '* > rails@4.2.6':
+        reason: None given
+        expires: '2017-01-06T13:04:02.074Z'
   SNYK-RUBY-ACTIVERECORD-20270:
     - '* > rails@4.2.6':
         reason: None given
