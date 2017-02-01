@@ -1,4 +1,6 @@
-version: v1.5.0
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   SNYK-RUBY-ACTIONVIEW-20271:
     - '* > coffee-rails@4.1.1':
@@ -14,4 +16,8 @@ ignore:
     - '* > rails@4.2.6':
         reason: None given
         expires: '2016-12-16T09:30:49.110Z'
+  SNYK-RUBY-NOKOGIRI-20299:
+    - '* > coffee-rails@4.1.1':
+        reason: None given
+        expires: '2017-03-03T15:47:54.494Z'
 patch: {}
